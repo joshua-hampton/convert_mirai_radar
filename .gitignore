@@ -1,0 +1,6 @@
+*.dbz
+*.nc
+*.txt
+*.ipynb
+*.exe
+.ipynb_checkpoints
