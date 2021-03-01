@@ -3,4 +3,5 @@
 *.txt
 *.ipynb
 *.exe
+*.grads
 .ipynb_checkpoints
