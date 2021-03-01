@@ -84,11 +84,12 @@ def convert_to_netcdf(textfile, outfile = None, x = 201, y = 201, z = 40,
     data_array = np.empty((x,y,z))
     for k in range(data_array.shape[2]):
         for j in range(data_array.shape[1]):
-            try:
-                data_array[:,j,k] = data[j+k*data_array.shape[1]].replace('    ', ',').split(',')
-            except:
-                print(j,k)
-                raise
+            data_list = data[j+k*data_array.shape[1]].replace(' ', ',').split(',')
+            only_data = []
+            for d in data_list:
+                if len(d) > 0:
+                    only_data.append(d)
+            data_array[:,j,k] = only_data
             
     # Create and write netcdf file
     dataset = nc.Dataset(outfile, 'w', format='NETCDF4')
